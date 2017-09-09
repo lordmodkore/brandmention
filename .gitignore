@@ -1,0 +1,10 @@
+trunk/node_modules
+trunk/public/storage
+trunk/storage/*.key
+trunk/vendor
+trunk/.idea
+trunk/Homestead.json
+trunk/Homestead.yaml
+trunk/.env
+trunk/.DS_Store
+.DS_Store
