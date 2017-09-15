@@ -1,5 +1,6 @@
 trunk/node_modules
 trunk/public/storage
+trunk/public/vendor
 trunk/storage/*.key
 trunk/vendor
 trunk/bower_components
