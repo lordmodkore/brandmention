@@ -19,14 +19,16 @@ mix.js('resources/assets/js/main.js', 'public/js')
 //     proxy: 'brandmention.com'
 // });
 
-mix.scripts([
-    './bower_components/jquery/dist/jquery.js',
-    './bower_components/bootstrap/dist/js/bootstrap.js',
-    './resources/assets/js/apps/*.js',
-    './resources/assets/js/charts/*.js',
-    './resources/assets/js/forms/*.js',
-    './resources/assets/js/helpers/*.js',
-    './resources/assets/js/maps/*.js',
-    './resources/assets/js/tables/*.js',
-    './resources/assets/js/ui/*.js',
-], 'public/js/vendor.js');
+// mix.scripts([
+//     './bower_components/jquery/dist/jquery.js',
+//     './bower_components/bootstrap/dist/js/bootstrap.js',
+//      './bower_components/moment/moment.js',
+//     './bower_components/perfect-scrollbar/js/perfect-scrollbar.js',
+//     './resources/assets/js/apps/*.js',
+//     './resources/assets/js/charts/*.js',
+//     './resources/assets/js/forms/*.js',
+//     './resources/assets/js/helpers/*.js',
+//     './resources/assets/js/maps/*.js',
+//     './resources/assets/js/tables/*.js',
+//     './resources/assets/js/ui/*.js',
+// ], 'public/js/vendor.js');

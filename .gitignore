@@ -2,6 +2,7 @@ trunk/node_modules
 trunk/public/storage
 trunk/storage/*.key
 trunk/vendor
+trunk/bower_components
 trunk/.idea
 trunk/Homestead.json
 trunk/Homestead.yaml

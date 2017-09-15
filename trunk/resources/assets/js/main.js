@@ -3,6 +3,8 @@
  */
 (function ($) {
   'use strict';
+
+  jQuery.noConflict();
   /* Define some variables */
   var $window = $(window),
     app = $('.app'),
