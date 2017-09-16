@@ -42,11 +42,12 @@ class RegisterController extends Controller
     {
         $user = User::where('email_token',$token)->first();
         $temp_password = str_random(8);
-        $user->verified = 1;
-        $user->password =  bcrypt($temp_password);
-
-        if($user->save()){
-            return view('users.confirmation',['user'=>$user,'password'=>$temp_password]);
+        if($user->verified==0){
+            $user->verified = 1;
+            $user->password =  bcrypt($temp_password);
+            if($user->save()){
+                return view('users.confirmation',['user'=>$user,'password'=>$temp_password]);
+            }
         }
     }
     /**

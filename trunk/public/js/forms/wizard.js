@@ -5,9 +5,9 @@
   'use strict';
 
   // Credit card form
-  $('#wizardForm').card({
-    container: '.credit-card'
-  });
+  // $('#wizardForm').card({
+  //   container: '.credit-card'
+  // });
 
   // Checkbo plugin
   $('.checkbo').checkBo();
@@ -15,39 +15,24 @@
   // Jquery validator
   var $validator = $('#wizardForm').validate({
     rules: {
-      emailfield: {
+      email: {
         required: true,
         email: true,
         minlength: 3
       },
-      namefield: {
+      name: {
         required: true,
         minlength: 3
       },
-      passwordfield: {
+      password: {
         required: true,
         minlength: 6
       },
       cpasswordfield: {
         required: true,
         minlength: 6,
-        equalTo: '#passwordfield'
+        equalTo: '#password'
       },
-      description: {
-        required: true
-      },
-      number: {
-        required: true
-      },
-      name: {
-        required: true
-      },
-      expiry: {
-        required: true
-      },
-      cvc: {
-        required: true
-      }
     }
   });
 
@@ -58,14 +43,23 @@
       return false;
     }
   }
-
+  function lastStep(){
+    return false;
+  }
   // Twitter bootstrap wizard
   $('#rootwizard').bootstrapWizard({
     tabClass: '',
     'nextSelector': '.button-next',
     'previousSelector': '.button-previous',
     onNext: checkValidation,
-    onLast: checkValidation,
+    onLast: lastStep,
     onTabClick: checkValidation
   });
+
+      $('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
+    var $total = navigation.find('.tab-pager').length;
+    var $current = index+1;
+    var $percent = ($current/$total) * 100;
+    $('#rootwizard').find('.bar').css({width:$percent+'%'});
+  }});
 })(jQuery);

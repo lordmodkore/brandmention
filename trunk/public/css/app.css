@@ -104,6 +104,37 @@
 91. utilities
 */
 
+.wizard-pager li.disabled a {
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  opacity: .65;
+  color: #59595A;
+  background-color: #e2e2e2;
+  border-color: rgba(0, 0, 0, 0.04);
+}
+
+.wizard-pager li.disabled a:hover {
+  background-color: #e2e2e2;
+  border-color: rgba(0, 0, 0, 0.04);
+}
+
+.wizard-pager li > a {
+  display: inline-block;
+  padding: 5px 1.25rem;
+  background-color: #6164C1;
+  border: 1px solid #6164C1;
+  border-radius: 0;
+  color: #fff;
+}
+
+.wizard-pager li > a:hover {
+  color: white;
+  background-color: #4347ac;
+  border-color: #4044a4;
+}
+
 /* $scaffolding
  ------------------------------------------*/
 

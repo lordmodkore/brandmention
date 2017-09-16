@@ -23,3 +23,4 @@ Auth::routes();
 Auth::routes();
 
 Route::get('/verify/{token}', 'Auth\RegisterController@verify');
+Route::get('/user/profile', ['middleware' => 'auth', 'uses' => 'UserController@show']);
