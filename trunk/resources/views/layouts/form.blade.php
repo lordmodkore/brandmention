@@ -5,6 +5,7 @@
     <title>BrandMention | @yield('title')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- page stylesheets -->
     <!-- end page stylesheets -->
     <!-- build:css({.tmp,app}) styles/app.min.css -->

@@ -16,11 +16,9 @@
 // });
 
 Route::get('/', ['middleware' => 'auth', 'uses' => 'HomeController@index']);
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
+
 Route::get('/verify/{token}', 'Auth\RegisterController@verify');

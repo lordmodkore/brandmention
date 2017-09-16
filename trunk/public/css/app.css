@@ -1897,6 +1897,10 @@ figure:hover:before {
   line-height: 1;
 }
 
+.brand img {
+  max-width: 100%;
+}
+
 .brand .toggle-sidebar {
   padding-top: 0;
   padding-bottom: 0;
@@ -1910,8 +1914,8 @@ figure:hover:before {
 .brand .toggle-apps {
   padding-top: 0;
   padding-bottom: 0;
-  padding-right: 1.563rem;
-  padding-left: 1.563rem;
+  padding-right: 0;
+  padding-left: 0;
   float: right;
   padding-top: 1.094rem;
   padding-bottom: 1.094rem;

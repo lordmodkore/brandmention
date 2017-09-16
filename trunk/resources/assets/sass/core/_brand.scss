@@ -13,6 +13,9 @@
     text-transform: uppercase;
     line-height: 1;
   }
+  img{
+    max-width:100%;
+  }
   .toggle-sidebar {
     padding-top: 0;
     padding-bottom: 0;
@@ -24,8 +27,8 @@
   .toggle-apps {
     padding-top: 0;
     padding-bottom: 0;
-    padding-right: 1.563rem;
-    padding-left: 1.563rem;
+    padding-right: 0;
+    padding-left: 0;
     float: right;
     @include vertical-align-padding($header-height, 1.25rem);
   }

@@ -2,9 +2,10 @@
 <html class="no-js" lang="">
 <head>
   <meta charset="utf-8">
-  <title>BrandMention | @yield('title')</title>
+  <title>Brand Mention | @yield('title')</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- page stylesheets -->
   <!-- end page stylesheets -->
   <!-- build:css({.tmp,app}) styles/app.min.css -->
@@ -45,9 +46,9 @@
           </div>
           <!-- /toggle offscreen menu -->
           <!-- logo -->
-          <a class="brand-logo">
-            <span>REACTOR</span>
-          </a>
+          <div class="brand-logo">
+            <img src="{{URL::asset('images/logo.png')}}" />
+          </div>
           <!-- /logo -->
         </div>
         <ul class="nav navbar-nav hidden-xs">
@@ -206,7 +207,7 @@
           <li>
             <a href="javascript:;" class="ripple" data-toggle="dropdown">
               <img src="images/avatar.jpg" class="header-avatar img-circle" alt="user" title="user">
-              <span>Sean Carpenter</span>
+              <span><?php echo Auth::user()->firstname;?></span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
@@ -226,9 +227,15 @@
               <li>
                 <a href="javascript:;">Help</a>
               </li>
-              <li>
-                <a href="extras-signin.html">Logout</a>
+              <li> 
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                   document.getElementById('logout-form').submit();">
+                                                     Logout
+               </a>
               </li>
+               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
             </ul>
           </li>
           <li>

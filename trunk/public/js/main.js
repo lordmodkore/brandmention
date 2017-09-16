@@ -1,18 +1,97 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(1);
+module.exports = __webpack_require__(2);
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
 /**
  * Main scripts file
  */
 (function ($) {
   'use strict';
+
+  jQuery.noConflict();
   /* Define some variables */
   var $window = $(window),
-    app = $('.app'),
-    isChatOpen = false,
-    isSearchOpen = false,
-    offscreenDirection,
-    offscreenDirectionClass,
-    rapidClickCheck = false,
-    isOffscreenOpen = false,
-    psTarg = $('.no-touch .sidebar-panel');
+      app = $('.app'),
+      isChatOpen = false,
+      isSearchOpen = false,
+      offscreenDirection,
+      offscreenDirectionClass,
+      rapidClickCheck = false,
+      isOffscreenOpen = false,
+      psTarg = $('.no-touch .sidebar-panel');
 
   /* Preloader */
   function preloader() {
@@ -77,8 +156,8 @@
 
   function chatPanel() {
     var toggleChat = $('[data-toggle=layout-chat-open], [data-toggle=chat-dismiss]'),
-      toggleChatBox = $('.chat-users .chat-group a, .chat-back'),
-      chatSidebar = $('.app > .chat-panel');
+        toggleChatBox = $('.chat-users .chat-group a, .chat-back'),
+        chatSidebar = $('.app > .chat-panel');
     toggleChat.on('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -196,9 +275,9 @@
     $('.ripple').on('click', function (e) {
       e.preventDefault();
       var $div = $('<div/>'),
-        btnOffset = $(this).offset(),
-        xPos = e.pageX - btnOffset.left,
-        yPos = e.pageY - btnOffset.top;
+          btnOffset = $(this).offset(),
+          xPos = e.pageX - btnOffset.left,
+          yPos = e.pageY - btnOffset.top;
       $div.addClass('ripple-effect');
       var $ripple = $('.ripple-effect');
       $ripple.css('height', $(this).height());
@@ -218,7 +297,7 @@
     /* Card controls */
     $('[data-toggle=card-collapse]').on('click', function (e) {
       var parent = $(this).parents('.card'),
-        body = parent.children('.card-block');
+          body = parent.children('.card-block');
 
       if (body.is(':visible')) {
         parent.addClass('card-collapsed');
@@ -259,7 +338,7 @@
   function accordion() {
     /* Accordion UI Element */
     var accordionBody = $('.accordion > .accordion-container > .accordion-body'),
-      accordionTitleTarget = $('.accordion > .accordion-container > .accordion-title > a');
+        accordionTitleTarget = $('.accordion > .accordion-container > .accordion-title > a');
 
     if ($('.accordion').length) {
       accordionBody.hide();
@@ -294,7 +373,6 @@
         return false;
       }
       return false;
-
     });
   }
 
@@ -324,10 +402,10 @@
     /* Sidebar sub-menus */
     $('.sidebar-panel nav a').on('click', function (e) {
       var $this = $(this),
-        links = $this.parents('li'),
-        parentLink = $this.closest('li'),
-        otherLinks = $('.sidebar-panel nav li').not(links),
-        subMenu = $this.next();
+          links = $this.parents('li'),
+          parentLink = $this.closest('li'),
+          otherLinks = $('.sidebar-panel nav li').not(links),
+          subMenu = $this.next();
       if (!subMenu.hasClass('sub-menu')) {
         toggleMenu();
         return;
@@ -336,9 +414,9 @@
         return;
       }
       otherLinks.removeClass('open');
-      if (subMenu.is('ul') && (subMenu.height() === 0)) {
+      if (subMenu.is('ul') && subMenu.height() === 0) {
         parentLink.addClass('open');
-      } else if (subMenu.is('ul') && (subMenu.height() !== 0)) {
+      } else if (subMenu.is('ul') && subMenu.height() !== 0) {
         parentLink.removeClass('open');
       }
       if ($this.attr('href') === '#') {
@@ -426,3 +504,12 @@
   }
   init();
 })(jQuery);
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ })
+/******/ ]);

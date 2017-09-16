@@ -1,4 +1,5 @@
 @extends ('layouts.app')
+
 @section('content')
 <div class="main-content">
         <div class="m-x-n-g m-t-n-g overflow-hidden">
@@ -409,9 +410,11 @@
     <div class="sidebar-panel offscreen-left">
       <div class="brand">
         <!-- toggle small sidebar menu -->
-        <a href="javascript:;" class="toggle-apps hidden-xs" data-toggle="quick-launch">
-          <i class="icon-grid"></i>
-        </a>
+        <div class="col-md-2 col-md-push-10">
+          <a href="javascript:;" class="toggle-apps hidden-xs" data-toggle="quick-launch">
+            <i class="icon-grid"></i>
+          </a>
+        </div>
         <!-- /toggle small sidebar menu -->
         <!-- toggle offscreen menu -->
         <div class="toggle-offscreen">
@@ -422,11 +425,12 @@
           </a>
         </div>
         <!-- /toggle offscreen menu -->
-        <!-- logo -->
-        <a class="brand-logo">
-          <span>Reactor</span>
-        </a>
-        <a href="#" class="small-menu-visible brand-logo">R</a>
+          <!-- logo -->
+          <div class="brand-logo col-md-10 col-md-pull-2">
+            <img src="{{URL::asset('images/logo.png')}}" />
+          </div>
+          <!-- /logo -->
+        <a href="#" class="small-menu-visible brand-logo">BM</a>
         <!-- /logo -->
       </div>
       <ul class="quick-launch-apps hide">

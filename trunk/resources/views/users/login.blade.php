@@ -8,16 +8,27 @@
       <div class="column">
         <div class="card bg-white no-border">
           <div class="card-block">
-            <form role="form" class="form-layout" action="/">
+            <form role="form" method="POST" class="form-layout" action="{{ route('login') }}">
+              {{ csrf_field() }}
               <div class="text-center m-b">
                 <h4 class="text-uppercase">Welcome back</h4>
                 <p>Please sign in to your account</p>
               </div>
               <div class="form-inputs">
                 <label class="text-uppercase">Your email address</label>
-                <input type="email" class="form-control input-lg" placeholder="Email Address" required>
+                <input type="email" name="email" id="email" class="form-control input-lg" value ="{{ old('email') }}" placeholder="Email Address" required>
+                @if ($errors->has('email'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
                 <label class="text-uppercase">Password</label>
-                <input type="password" class="form-control input-lg" placeholder="Password" required>
+                <input type="password" class="form-control input-lg" name="password" id="password" value ="" placeholder="Password" required>
+                @if ($errors->has('password'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
               </div>
               <button class="btn btn-primary btn-block btn-lg m-b" type="submit">Login</button>
               <div class="divider">
