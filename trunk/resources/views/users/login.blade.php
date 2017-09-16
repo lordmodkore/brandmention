@@ -7,6 +7,11 @@
   <div class="column">
     <div class="card bg-white no-border">
       <div class="card-block">
+        @if ($errors->any())
+          @foreach ($errors->all() as $error)
+            <div class="text-center">{{ $error }}</div>
+          @endforeach
+        @endif
         <form role="form" method="POST" class="form-layout" action="{{ route('login') }}">
           {{ csrf_field() }}
           <div class="text-center m-b">
@@ -16,6 +21,7 @@
           <div class="form-inputs">
             <label class="text-uppercase">Your email address</label>
             <input type="email" name="email" id="email" class="form-control input-lg" value ="{{ old('email') }}" placeholder="Email Address" required>
+
             @if ($errors->has('email'))
                 <span class="help-block">
                     <strong>{{ $errors->first('email') }}</strong>
