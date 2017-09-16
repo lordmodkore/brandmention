@@ -1,5 +1,5 @@
 @extends ('layouts.app')
-
+@section('title', 'Dashboard')
 @section('content')
 <div class="main-content">
         <div class="m-x-n-g m-t-n-g overflow-hidden">

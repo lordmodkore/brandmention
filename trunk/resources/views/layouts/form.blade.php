@@ -2,7 +2,7 @@
 <html class="no-js" lang="">
   <head>
     <meta charset="utf-8">
-    <title>BrandMention | @yield('title')</title>
+    <title>Brand Mention | @yield('title')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -25,9 +25,10 @@
       </div>
     </div>
     <div class="app signin usersession">
-      @yield('content')
+      <div class="session-wrapper">
+        @yield('content')
+      </div>
     </div>
-
     <script src="{{ asset('js/helpers/modernizr.js') }}"></script>
     <script src="{{ asset('vendor/jquery/dist/jquery.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.js') }}"></script>

@@ -207,8 +207,13 @@
           <li>
             <a href="javascript:;" class="ripple" data-toggle="dropdown">
               <img src="images/avatar.jpg" class="header-avatar img-circle" alt="user" title="user">
-              <span><?php echo Auth::user()->firstname;?></span>
-              <span class="caret"></span>
+              <?php 
+                $user = Auth::user();
+              ?>
+               <?php if($user) : ?> 
+                <span><?php echo Auth::user()->firstname;?></span>
+                <span class="caret"></span>
+              <?php endif;?>
             </a>
             <ul class="dropdown-menu">
               <li>

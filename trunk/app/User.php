@@ -17,19 +17,9 @@ class User extends Authenticatable
     protected $fillable = [
         'group_id', 
         'email', 
-        'password',
         'firstname',
         'lastname',
-        'company_name',
-        'company_address',
-        'language',
-        'phone',
-        'city',
-        'postcode',
-        'country',
-        'vat_number',
-        'paypal_username',
-        'status',
+        'password',
         'email_token'
     ];
 

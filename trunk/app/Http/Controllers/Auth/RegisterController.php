@@ -38,7 +38,17 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+    public function verify($token)
+    {
+        $user = User::where('email_token',$token)->first();
+        $temp_password = str_random(8);
+        $user->verified = 1;
+        $user->password =  bcrypt($temp_password);
 
+        if($user->save()){
+            return view('users.confirmation',['user'=>$user,'password'=>$temp_password]);
+        }
+    }
     /**
      * Get a validator for an incoming registration request.
      *
@@ -50,7 +60,6 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'firstname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
         ]);
     }
 
@@ -62,22 +71,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $password = str_random(8);
         return User::create([
             'group_id'          =>  $data['group_id'],
             'email'             =>  $data['email'],
-            'password'          =>  bcrypt($data['password']),
             'firstname'         =>  $data['firstname'],
             'lastname'          =>  $data['lastname'],
-            'company_name'      =>  $data['company_name'],
-            'company_address'   =>  $data['company_address'],
-            'language'          =>  $data['language'],
-            'phone'             =>  $data['phone'],
-            'city'              =>  $data['city'],
-            'postcode'          =>  $data['postcode'],
-            'country'           =>  $data['country'],
-            'vat_number'        =>  $data['vat_number'],
-            'paypal_username'   =>  $data['paypal_username'],
-            'status'            =>  $data['status'],
+            'password'          =>  bcrypt($password),
             'email_token' => base64_encode($data['email'])
         ]);
     }
