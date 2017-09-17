@@ -770,7 +770,7 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="{{url('/user/profile')}}">Account</a>
+                <a href="{{action('UserController@edit', $user->id)}}">Account</a>
               </li>
               <li>
                 <a href="javascript:;">Upgrade</a>
@@ -800,6 +800,7 @@
       <!-- /top header -->
       <!-- main area -->
       <div class="main-content">
+  
         @yield('content')
       </div>
       <!-- /main area -->

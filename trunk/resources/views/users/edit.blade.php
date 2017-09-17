@@ -4,9 +4,25 @@
         <div class="page-title">
           <div class="title">User Profile</div>
           <div class="sub-title"></div>
+
         </div>
-        <form id="wizardForm" class="form-horizontal" method="POST" action="" role="form">
+	      @if ($errors->any())
+	      <div class="alert alert-danger">
+	          <ul>
+	              @foreach ($errors->all() as $error)
+	                  <li>{{ $error }}</li>
+	              @endforeach
+	          </ul>
+	      </div><br />
+	      @endif
+	      @if(session()->has('success'))
+	            <div class="alert alert-success">
+	                {{ session()->get('success') }}
+	            </div>
+	        @endif
+        <form id="wizardForm" class="form-horizontal " method="POST" action="{{action('UserController@update', $user->id)}}" role="form">
         	{{ csrf_field() }}
+        	 <input name="_method" type="hidden" value="PATCH">
           <div class="card">
             <div class="card-block p-a-0">
               <div class="box-tab m-b-0" id="rootwizard">
@@ -41,40 +57,51 @@
                   </div>
                   <div class="tab-pane p-x-lg" id="tab2">
                     <div class="form-group">
-                      <label class="col-sm-2 control-label">Short bio</label>
+                      <label class="col-sm-2 control-label">First Name</label>
                       <div class="col-sm-4">
-                        <textarea class="form-control" rows="3"></textarea>
+                    	<input id="firstname" type="text" class="form-control" name="firstname">
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="col-sm-2 control-label">Job description</label>
+                      <label class="col-sm-2 control-label">Last Name</label>
                       <div class="col-sm-4">
-                        <select class="form-control" id="description" name="description">
-                          <option>Human resources</option>
-                          <option>Frontend developer</option>
-                          <option>Backend developer</option>
-                          <option>Network engineer</option>
-                        </select>
+                  		<input id="lastname" type="text" class="form-control" name="lastname">
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="col-sm-2 control-label">Interests</label>
+                      <label class="col-sm-2 control-label">Company name</label>
                       <div class="col-sm-4 pt5 mt2">
-                        <label class="cb-checkbox">
-                          <input type="checkbox" name="interests" value="hr" />Human resources
-                        </label>
-                        <br>
-                        <label class="cb-checkbox">
-                          <input type="checkbox" name="interests" value="chess" />Chess
-                        </label>
-                        <br>
-                        <label class="cb-checkbox">
-                          <input type="checkbox" name="interests" value="soccer" />Soccer
-                        </label>
-                        <br>
-                        <label class="cb-checkbox">
-                          <input type="checkbox" name="interests" value="web" />Web design
-                        </label>
+      		     			<input id="lastname" type="text" class="form-control" name="company_name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Company address</label>
+                      <div class="col-sm-4 pt5 mt2">
+      		     			<textarea id="lastname" type="text" class="form-control" name="company_address"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Street Address</label>
+                      <div class="col-sm-4 pt5 mt2">
+      		     			<input id="street_address" type="text" class="form-control" name="street_address">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">City</label>
+                      <div class="col-sm-4 pt5 mt2">
+      		     			<input id="city" type="text" class="form-control" name="city">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Country</label>
+                      <div class="col-sm-4 pt5 mt2">
+      		     			<input id="country" type="text" class="form-control" name="country">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Post Code</label>
+                      <div class="col-sm-4 pt5 mt2">
+      		     			<input id="post_code" type="text" class="form-control" name="post_code">
                       </div>
                     </div>
                   </div>
@@ -111,7 +138,7 @@
 					<ul class="pager wizard wizard-pager">
 						<li class="previous button-previous"><a href="javascript:;">Previous</a></li>
 					  	<li class="next button-next"><a href="javascript:;">Next</a></li>
-						<li class="finish pull-right"><a href="javascript:;">Update</a></li>
+						<li class="finish pull-right"><button type="submit"> Update</button></li>
 					</ul>
                 </div>
               </div>

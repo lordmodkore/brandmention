@@ -16,11 +16,11 @@
 // });
 
 Route::get('/', ['middleware' => 'auth', 'uses' => 'HomeController@index']);
-
+Route::resource('users','UserController');
 
 Auth::routes();
 
 Auth::routes();
 
 Route::get('/verify/{token}', 'Auth\RegisterController@verify');
-Route::get('/user/profile', ['middleware' => 'auth', 'uses' => 'UserController@show']);
+// Route::get('/user/profile/', ['middleware' => 'auth', 'uses' => 'UserController@editProfile']);
