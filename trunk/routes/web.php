@@ -18,9 +18,12 @@
 Route::get('/', ['middleware' => 'auth', 'uses' => 'HomeController@index']);
 Route::resource('users','UserController');
 
-Auth::routes();
 
 Auth::routes();
-
+Auth::routes();
 Route::get('/verify/{token}', 'Auth\RegisterController@verify');
 // Route::get('/user/profile/', ['middleware' => 'auth', 'uses' => 'UserController@editProfile']);
+// 
+Route::middleware(['auth', 'admin'])->group(function () {
+	Route::resource('groups','GroupController');
+});

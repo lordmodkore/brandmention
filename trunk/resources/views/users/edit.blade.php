@@ -6,21 +6,7 @@
           <div class="sub-title"></div>
 
         </div>
-	      @if ($errors->any())
-	      <div class="alert alert-danger">
-	          <ul>
-	              @foreach ($errors->all() as $error)
-	                  <li>{{ $error }}</li>
-	              @endforeach
-	          </ul>
-	      </div><br />
-	      @endif
-	      @if(session()->has('success'))
-	            <div class="alert alert-success">
-	                {{ session()->get('success') }}
-	            </div>
-	        @endif
-        <form id="wizardForm" class="form-horizontal " method="POST" action="{{action('UserController@update', $user->id)}}" role="form">
+          <form id="wizardForm" class="form-horizontal " method="POST" action="{{action('UserController@update', $user->id)}}" role="form">
         	{{ csrf_field() }}
         	 <input name="_method" type="hidden" value="PATCH">
           <div class="card">
@@ -39,7 +25,7 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Email address</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" placeholder="{{$user->email}}" value="{{ old('email') }}"  id="email" name="email">
+                        <input type="text" class="form-control" placeholder="{{$user->email}}" value="{{ old('email') }}"  id="email" name="email" disabled>
                       </div>
                     </div>
                     <div class="form-group">
@@ -136,9 +122,9 @@
                     </div>
                   </div>
 					<ul class="pager wizard wizard-pager">
-						<li class="previous button-previous"><a href="javascript:;">Previous</a></li>
+						  <li class="previous button-previous"><a href="javascript:;">Previous</a></li>
 					  	<li class="next button-next"><a href="javascript:;">Next</a></li>
-						<li class="finish pull-right"><button type="submit"> Update</button></li>
+						  <li class="finish pull-right"><button type="submit" class="btn"> Update</button></li>
 					</ul>
                 </div>
               </div>
@@ -149,14 +135,14 @@
 @endsection
 
 @section ('scripts')
-  	<script src="{{ asset('vendor/fastclick/lib/fastclick.js') }}"></script>
-  	<script src="{{ asset('vendor/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
-  	<script src="{{ asset('js/helpers/smartresize.js') }}"></script>
-  	<script src="{{ asset('js/constants.js') }}"></script>
-  	<script src="{{ asset('js/main.js') }}"></script>
-	<script src="{{ asset('vendor/chosen_v1.4.0/chosen.jquery.min.js') }}"></script>
-	<script src="{{ asset('vendor/jquery-validation/dist/jquery.validate.min.js') }}"></script>
-	<script src="{{ asset('vendor/checkbo/src/0.1.4/js/checkBo.min.js') }}"></script>
-	<script src="{{ asset('vendor/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
-	<script src="{{ asset('js/forms/wizard.js') }}"></script>
+    <script src="{{ asset('vendor/fastclick/lib/fastclick.js') }}"></script>
+    <script src="{{ asset('vendor/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
+    <script src="{{ asset('js/helpers/smartresize.js') }}"></script>
+    <script src="{{ asset('js/constants.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('vendor/chosen_v1.4.0/chosen.jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendor/checkbo/src/0.1.4/js/checkBo.min.js') }}"></script>
+    <script src="{{ asset('vendor/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+    <script src="{{ asset('js/forms/wizard.js') }}"></script>
 @endsection

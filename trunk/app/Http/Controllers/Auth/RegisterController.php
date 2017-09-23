@@ -38,6 +38,28 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+    public function showRegistrationForm()
+    {
+        return view('users.signup');
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+       
+        event(new Registered($user = $this->create($request->all())));
+
+        //$this->guard()->login($user);
+        dispatch(new SendVerificationEmail($user));
+
+        return view('users.verification');
+    }
     public function verify($token)
     {
         $user = User::where('email_token',$token)->first();

@@ -78,11 +78,11 @@ module.exports = __webpack_require__(2);
 /**
  * Main scripts file
  */
+jQuery.noConflict();
 (function ($) {
   'use strict';
-
-  jQuery.noConflict();
   /* Define some variables */
+
   var $window = $(window),
       app = $('.app'),
       isChatOpen = false,

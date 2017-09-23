@@ -120,7 +120,8 @@
   border-color: rgba(0, 0, 0, 0.04);
 }
 
-.wizard-pager li > a {
+.wizard-pager li > a,
+.wizard-pager li .btn {
   display: inline-block;
   padding: 5px 1.25rem;
   background-color: #6164C1;
@@ -129,7 +130,8 @@
   color: #fff;
 }
 
-.wizard-pager li > a:hover {
+.wizard-pager li > a:hover,
+.wizard-pager li .btn:hover {
   color: white;
   background-color: #4347ac;
   border-color: #4044a4;
