@@ -103,20 +103,27 @@
             <?php if($user->is('admin')) : ?>
             <!-- users -->
             <li>
-              <a href="{{action('GroupController@create')}}">
+              <a href="{{action('UserController@index')}}">
                 <i class="icon-user"></i>
                 <span>Users</span>
               </a>
               <ul class="sub-menu">
                 <li>
-                  <a href="cards-basic.html">
-                    <span>Basic</span>
+                  <a href="#">
+                    <span>Add New User</span>
                   </a>
                 </li>
                 <li>
-                  <a href="cards-basic.html">
-                    <span>Basic</span>
+                  <a href="#">
+                    <span>Groups</span>
                   </a>
+                  <ul class="sub-menu">
+                <li>
+                  <a href="#">
+                    <span>Add New User</span>
+                  </a>
+                </li>
+                  </ul>
                 </li>
               </ul>
             </li>

@@ -6,7 +6,7 @@
           <div class="sub-title"></div>
 
         </div>
-          <form id="wizardForm" class="form-horizontal " method="POST" action="{{action('UserController@update', $user->id)}}" role="form">
+          <form id="wizardForm" class="form-horizontal " method="POST" action="{{action('UserController@update', $users->id)}}" role="form">
         	{{ csrf_field() }}
         	 <input name="_method" type="hidden" value="PATCH">
           <div class="card">
@@ -25,7 +25,7 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Email address</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" placeholder="{{$user->email}}" value="{{ old('email') }}"  id="email" name="email" disabled>
+                        <input type="text" class="form-control" placeholder="{{$users->email}}" value="{{ old('email') }}"  id="email" name="email" disabled>
                       </div>
                     </div>
                     <div class="form-group">

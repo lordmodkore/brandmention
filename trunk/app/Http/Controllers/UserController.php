@@ -20,11 +20,14 @@ class UserController extends Controller
         $this->middleware('auth');
     }
     
+    public function dashboard()
+    {
+        return view('users.dashboard');
+    }
     public function index()
     {
         return view('users.index');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -70,7 +73,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $users= User::find($id);
-        return view('users.edit')->with('user',$users);
+        $groups = $users->group->get();
+        return view('users.edit',compact('users','groups'));
     }
 
     /**
