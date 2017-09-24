@@ -109,7 +109,7 @@
               </a>
               <ul class="sub-menu">
                 <li>
-                  <a href="#">
+                  <a href="{{action('UserController@create')}}">
                     <span>Add New User</span>
                   </a>
                 </li>
@@ -119,8 +119,8 @@
                   </a>
                   <ul class="sub-menu">
                 <li>
-                  <a href="#">
-                    <span>Add New User</span>
+                  <a href="{{action('GroupController@create')}}">
+                    <span>Add User Group</span>
                   </a>
                 </li>
                   </ul>
