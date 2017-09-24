@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
-
+use App\Group;
 
 class UserController extends Controller
 {
@@ -35,7 +35,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        
+        $remember_token = str_random(10);
+        $groups = Group::all();
+
+        return view('users.create',compact('remember_token','groups'));
     }
 
     /**
@@ -46,7 +50,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->request->add(['email_token' => base64_encode($request->email)]);
+        User::create($request->all());
+        return redirect()->route('user.dashboard')->with('success','User created successfully');
     }
 
     /**
@@ -73,7 +79,6 @@ class UserController extends Controller
     public function edit($id)
     {
         $users= User::find($id);
-        $groups = $users->group->get();
         return view('users.edit',compact('users','groups'));
     }
 

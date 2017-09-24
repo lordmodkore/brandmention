@@ -1,21 +1,21 @@
 @extends ('layouts.app')
-@section ('title', 'Edit your profile')
+@section ('title', 'New User')
 @section ('content')
         <div class="page-title">
-          <div class="title">User Profile</div>
+          <div class="title">Add New User</div>
           <div class="sub-title"></div>
 
         </div>
-          <form id="wizardForm" class="form-horizontal " method="POST" action="{{action('UserController@update', $users->id)}}" role="form">
+          <form id="wizardForm" class="form-horizontal " method="POST" action="{{action('UserController@store')}}" role="form">
         	{{ csrf_field() }}
-        	 <input name="_method" type="hidden" value="PATCH">
+          <input type="hidden" value="{{$remember_token}}" />
           <div class="card">
             <div class="card-block p-a-0">
               <div class="box-tab m-b-0" id="rootwizard">
                 <ul class="wizard-tabs">
                   <li><a class="active" href="#tab1"  data-toggle="tab">Account details</a>
                   </li>
-                  <li><a href="#tab2" data-toggle="tab">Your profile</a>
+                  <li><a href="#tab2" data-toggle="tab">User profile</a>
                   </li>
                   <li><a href="#tab4" data-toggle="tab">Additional information</a>
                   </li>
@@ -25,19 +25,19 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Email address</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" placeholder="{{$users->email}}" value="{{ old('email') }}"  id="email" name="email" disabled>
+                        <input type="text" class="form-control" placeholder="Email Address" value="{{ old('email') }}"  id="email" name="email">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Password</label>
                       <div class="col-sm-4">
-                        <input type="password" class="form-control" placeholder="Enter new password" id="password" name="password">
+                        <input type="password" class="form-control" id="password" name="password">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Confirm password</label>
                       <div class="col-sm-4">
-                       	<input id="password-confirm" type="password"  placeholder="Confirm password"  class="form-control" name="password_confirmation" required>
+                       	<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                       </div>
                     </div>
                   </div>
@@ -87,11 +87,22 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Post Code</label>
                       <div class="col-sm-4 pt5 mt2">
-      		     			<input id="post_code" type="text" class="form-control" name="post_code">
+      		     			  <input id="post_code" type="text" class="form-control" name="post_code">
                       </div>
                     </div>
                   </div>
                   <div class="tab-pane p-x-lg" id="tab4">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">User Group</label>
+                      <div class="col-sm-4 pt5 mt2">
+                       <select class="form-control" name="group_id" id="group_id">
+                          <option>--Select User Group--</option>
+                         @foreach ($groups as $group)
+                          <option value="{{$group->id}}">{{ucfirst($group->name)}}</option> 
+                         @endforeach
+                       </select>
+                      </div>
+                    </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Gender</label>
                       <div class="col-sm-4 pt5 mt2">
@@ -108,7 +119,7 @@
         					<ul class="pager wizard wizard-pager">
         						  <li class="previous button-previous"><a href="javascript:;">Previous</a></li>
         					  	<li class="next button-next"><a href="javascript:;">Next</a></li>
-        						  <li class="finish pull-right"><button type="submit" class="btn"> Update</button></li>
+        						  <li class="finish pull-right"><button type="submit" class="btn">Add User</button></li>
         					</ul>
                 </div>
               </div>
@@ -117,7 +128,6 @@
         </form>
       </div>
 @endsection
-
 @section ('scripts')
     <script src="{{ asset('vendor/fastclick/lib/fastclick.js') }}"></script>
     <script src="{{ asset('vendor/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>

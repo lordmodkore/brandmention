@@ -9,7 +9,7 @@
     <div class="card-block">
       <form role="form" class="form-layout" method="POST" action="{{ route('register') }}">
           {{ csrf_field() }}
-          <input type="hidden" id="group_id" name="group_id" value="1"/>
+          <input type="hidden" id="group_id" name="group_id" value="2"/>
           <input type="hidden" id="status" name="status" value="1"/>
           <div class="text-center m-b">
             <h4 class="text-uppercase">Register Now</h4>
