@@ -109,7 +109,7 @@
               </a>
               <ul class="sub-menu">
                 <li>
-                  <a href="{{action('UserController@index')}}">List All User</a>
+                  <a href="{{action('UserController@index')}}">Customers</a>
                 </li>
                 <li>
                   <a href="{{action('UserController@create')}}">
@@ -361,14 +361,13 @@
                 <a href="javascript:;">Help</a>
               </li>
               <li> 
-                <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                   document.getElementById('logout-form').submit();">
-                                                     Logout
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                  Logout
                </a>
               </li>
-               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+                </form>
             </ul>
           </li>
           <li>

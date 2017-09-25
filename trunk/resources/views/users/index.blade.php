@@ -32,10 +32,20 @@
 	                    <td data-title="Phone">{{$user->phone}}</td>
 	                    <td data-title="Company">{{$user->company_name}}</td>
 	                    <td>
-	                    	<form action="{{action('UserController@destroy', $user->id)}}" method="post">
-						 	{{csrf_field()}}
-							<input name="_method" type="hidden" value="DELETE">
-    						 <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button></td>
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <a class="btn btn-primary btn-xs" href="{{action('UserController@edit', $user->id)}}" >
+                              <span class="glyphicon glyphicon-pencil"></span>
+                            </a>                 
+                          </div>
+                          <div class="col-lg-4">
+  	                    	    <form action="{{action('UserController@destroy', $user->id)}}" method="post">
+  						 	              {{csrf_field()}}
+  							               <input name="_method" type="hidden" value="DELETE">
+      						            <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                            </form>
+                          </div>
+                      </td>
 	                  </tr>
                  	 @endforeach
 

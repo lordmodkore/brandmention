@@ -27,7 +27,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::orderBy('id','ASC')->where('group_id','<>',1)->paginate(10);
+        $users = User::orderBy('id','ASC')->where('group_id','=',2)->paginate(10);
         return view('users.index',compact('users'));
     }
     /**
@@ -54,7 +54,7 @@ class UserController extends Controller
     {
         $request->request->add(['email_token' => base64_encode($request->email)]);
         User::create($request->all());
-        return redirect()->route('user.dashboard')->with('success','User created successfully');
+        return redirect()->route('users.dashboard')->with('success','User created successfully');
     }
 
     /**
