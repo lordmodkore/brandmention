@@ -47,7 +47,7 @@
           </p>
         </form>
       </div>
-      <a ui-sref="user.forgot" class="bottom-link">Forgotten password?</a>
+      <a href="{{route('password.request')}}" class="bottom-link">Forgotten password?</a>
     </div>
   </div>
 </div>

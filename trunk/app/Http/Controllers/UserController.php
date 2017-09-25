@@ -24,9 +24,11 @@ class UserController extends Controller
     {
         return view('users.dashboard');
     }
+
     public function index()
     {
-        return view('users.index');
+        $users = User::orderBy('id','ASC')->where('group_id','<>',1)->paginate(10);
+        return view('users.index',compact('users'));
     }
     /**
      * Show the form for creating a new resource.
@@ -119,6 +121,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+
+        return redirect()->route('users.index')->with('success','User deleted successfully');
     }
 }

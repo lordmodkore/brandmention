@@ -32,7 +32,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-     public function group()
+    public function group()
     {
         return $this->belongsTo('App\Group');
     }

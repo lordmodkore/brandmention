@@ -13,10 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('users');
+
         Schema::create('users', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('group_id')->unsigned()->index();
-            $table->foreign('group_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('group_id')->unsigned()->nullable();
             $table->string('firstname',100);
             $table->string('lastname',100);
             $table->string('email')->unique();
@@ -38,6 +40,11 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
+
+        Schema::table('users', function($table){
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+        });
+
     }
 
     /**
@@ -47,6 +54,11 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+         Schema::table('users', function($table){
+            $table->dropForeign('users_group_id_foreign');
+        });
+
+       
         Schema::dropIfExists('users');
     }
 }

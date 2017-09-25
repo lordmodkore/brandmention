@@ -103,11 +103,14 @@
             <?php if($user->is('admin')) : ?>
             <!-- users -->
             <li>
-              <a href="{{action('UserController@index')}}">
+              <a href="javascript:void()">
                 <i class="icon-user"></i>
                 <span>Users</span>
               </a>
               <ul class="sub-menu">
+                <li>
+                  <a href="{{action('UserController@index')}}">List All User</a>
+                </li>
                 <li>
                   <a href="{{action('UserController@create')}}">
                     <span>Add New User</span>
