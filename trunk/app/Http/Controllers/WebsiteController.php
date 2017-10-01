@@ -22,7 +22,16 @@ class WebsiteController extends Controller
      */
     public function index()
     {
-        //
+        $id = auth()->user()->id;
+        $user = User::where('id',$id)->first(); 
+        if(!$user->is('admin')){
+            $websites = Website::orderBy('id','ASC')->where('user_id','=',$id)->paginate(10);
+        }else{
+            $websites = Website::all();
+
+        }
+
+        return view('website.index',compact('websites'));
     }
 
     /**

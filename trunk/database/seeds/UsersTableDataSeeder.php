@@ -29,7 +29,9 @@ class UsersTableDataSeeder extends Seeder
                 'lastname'	=>	$faker->lastname,
                 'email' => $faker->unique()->email,
                 'phone' => $faker->phoneNumber,
+                'password' => bcrypt('pass123'),
                 'group_id'	=>2,
+                'verified' =>1,
                 'created_at' => $now,
                 'updated_at' => $now,
 
