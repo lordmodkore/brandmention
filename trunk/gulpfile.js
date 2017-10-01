@@ -127,7 +127,7 @@ gulp.task('usemin', function () {
     }))
 });
 
-gulp.task('default', ['clean:styles', 'sass', 'webserver', 'livereload', 'watch']);
+gulp.task('default', ['clean:styles', 'sass']);
 gulp.task('build', function(callback) {
   runSequence('clean:tmp', ['clean:styles', 'sass', 'build-tasks'], 'usemin', callback);
 });

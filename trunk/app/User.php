@@ -36,6 +36,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Group');
     }
+    public function website()
+    {
+        return $this->hasMany('App\User');
+    }
     public function is($roleName)
     {
         foreach ($this->group()->get() as $role)

@@ -409,6 +409,9 @@ jQuery.noConflict();
     updateScrollbars();
   });
 
+  function formValidation(){
+    $('.form-validation').validate();
+  }
   function init() {
     smallMenu();
     sidebarPanel();
@@ -424,6 +427,7 @@ jQuery.noConflict();
     cardControls();
     accordion();
     apps();
+    formValidation();
   }
   init();
 })(jQuery);

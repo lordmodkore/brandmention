@@ -131,6 +131,19 @@
               </ul>
             </li>
             <?php endif;?>
+            <li>
+              <a href="javascript:void()">
+                <i class="fa fa-globe"></i>
+                <span>Websites</span>
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="{{action('WebsiteController@create')}}">
+                    <span>Add New Website</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
             <!-- /users -->
             <!-- cards -->
             <li>
@@ -622,6 +635,7 @@
 <script src="{{ asset('js/helpers/modernizr.js') }}"></script>
 <script src="{{ asset('vendor/jquery/dist/jquery.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
+<script src="{{ asset('vendor/jquery-validation/dist/jquery.validate.min.js') }}"></script>
 @yield('scripts')
   <!-- end initialize page scripts -->
 

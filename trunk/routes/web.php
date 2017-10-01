@@ -16,9 +16,6 @@
 // });
 
 Route::get('/', ['middleware' => 'auth', 'uses' => 'HomeController@index']);
-Route::resource('users','UserController');
-
-
 Auth::routes();
 Auth::routes();
 Route::get('/verify/{token}', 'Auth\RegisterController@verify');
@@ -26,4 +23,10 @@ Route::get('/verify/{token}', 'Auth\RegisterController@verify');
 // 
 Route::middleware(['auth', 'admin'])->group(function () {
 	Route::resource('groups','GroupController');
+	Route::resource('users','UserController', ['only' => ['destroy']]);
+});
+
+Route::middleware(['auth'])->group(function () {
+	Route::resource('users','UserController');
+	Route::resource('website','WebsiteController');
 });

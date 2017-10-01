@@ -137,6 +137,12 @@
   border-color: #4044a4;
 }
 
+.sidebar-panel > nav ul > li > a [class^="fa"] {
+  padding-right: 0.9375rem;
+  width: 1.875rem;
+  text-align: center;
+}
+
 /* $scaffolding
  ------------------------------------------*/
 
@@ -1195,7 +1201,8 @@ figure:hover:before {
 }
 
 .sidebar-panel > nav ul > li > a [class^="icon-"],
-.sidebar-panel > nav ul > li > a [class*=" icon-"] {
+.sidebar-panel > nav ul > li > a [class*=" icon-"],
+.sidebar-panel > nav ul > li > a .fa {
   padding-right: 0.9375rem;
   width: 1.875rem;
   text-align: center;
