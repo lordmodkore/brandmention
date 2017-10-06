@@ -95,15 +95,15 @@
     // `states` is an array of state names defined in "The Basics"
     local: statesList
   });
-  var bestPictures = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    prefetch: '../data/post_1960.json',
-    remote: {
-      url: '../data/films/queries/%QUERY.json',
-      wildcard: '%QUERY'
-    }
-  });
+  // var bestPictures = new Bloodhound({
+  //   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+  //   queryTokenizer: Bloodhound.tokenizers.whitespace,
+  //   prefetch: '../data/post_1960.json',
+  //   remote: {
+  //     url: '../data/films/queries/%QUERY.json',
+  //     wildcard: '%QUERY'
+  //   }
+  // });
   $('.typeahead-states').typeahead({
     hint: true,
     highlight: true,
@@ -112,11 +112,11 @@
     name: 'states',
     source: states
   });
-  $('.typeahead-oscars').typeahead(null, {
-    name: 'best-pictures',
-    display: 'value',
-    source: bestPictures
-  });
+  // $('.typeahead-oscars').typeahead(null, {
+  //   name: 'best-pictures',
+  //   display: 'value',
+  //   source: bestPictures
+  // });
 
   // Select2 plugin
   $('.select2').select2();

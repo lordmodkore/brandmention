@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- page stylesheets -->
+  @yield('styles')
   <!-- end page stylesheets -->
   <!-- build:css({.tmp,app}) styles/app.min.css -->
   <link href="{{ asset('css/webfont.css') }}" rel="stylesheet">
@@ -15,6 +16,7 @@
   <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
   <link href="{{ asset('css/card.css') }}" rel="stylesheet">
   <link href="{{ asset('css/sli.css') }}" rel="stylesheet">
+
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <!-- endbuild -->
 </head>
@@ -132,11 +134,16 @@
             </li>
             <?php endif;?>
             <li>
-              <a href="javascript:void()">
+              <a href="javascript:void(0)">
                 <i class="fa fa-globe"></i>
                 <span>Websites</span>
               </a>
               <ul class="sub-menu">
+                <li>
+                  <a href="{{action('WebsiteController@index')}}">
+                    <span>List Websites</span>
+                  </a>
+                </li>
                 <li>
                   <a href="{{action('WebsiteController@create')}}">
                     <span>Add New Website</span>

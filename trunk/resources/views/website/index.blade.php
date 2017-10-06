@@ -28,8 +28,13 @@
               				<td data-title="ID">{{$website->id}}</td>
           					<td data-title="Url">{{$website->url}}</td>
           					<td data-title="Cost">{{$website->cost}}</td>
-          					<td data-title="Categories">{{$website->categories}}</td>
-          					<td data-title="Language">{{$website->language}}</td>
+          					<td data-title="Categories">
+                      @foreach($website->categories as $cat)
+                        {{ $loop->first ? '' : '/' }}
+                        {{$cat->name}}
+                      @endforeach
+                    </td>
+          					<td data-title="F/N">{{$website->f_n}}</td>
           					<td data-title="Pubisher">{{$website->user->firstname}}</td>
       						<td data-title="Pubisher">{{$website->processing_time}}</td>
 		                    <td>

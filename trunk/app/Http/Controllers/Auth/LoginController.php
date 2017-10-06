@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -45,8 +45,14 @@ class LoginController extends Controller
         if (!$user->verified) {
          $this->guard()->logout();
           dispatch(new SendVerificationEmail($user));
-           return redirect('/login')->withErrors(['Account is not yet verified']);
+           return redirect('/')->withErrors(['Account is not yet verified']);
         }
         return redirect()->intended($this->redirectPath());
+    }   
+    public function showLoginForm()
+    {
+        return view('users.login');
     }
+    
+
 }

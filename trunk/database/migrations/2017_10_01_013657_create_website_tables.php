@@ -15,19 +15,19 @@ class CreateWebsiteTables extends Migration
     {
         Schema::create('websites', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned();
             $table->string('url');
             $table->decimal('cost');
             $table->string('currency');
-            $table->string('categories');
             $table->string('language');
             $table->string('f_n');
             $table->decimal('da');
             $table->string('tf');
+            $table->string('cf');
             $table->string('sr_traffic');
             $table->string('pa');
             $table->string('moz_rank');
-            $table->string('linkedin');
+            $table->string('links');
             $table->string('equity');
             $table->string('alexa_rank');
             $table->string('a_links');
@@ -41,7 +41,7 @@ class CreateWebsiteTables extends Migration
             $table->string('sr_hlinks');
             $table->string('sr_dlinks');
             $table->string('sf');
-            $table->string('ebl');
+            $table->string('el');
             $table->string('ref_domains');
             $table->string('processing_time');
             $table->string('example');
