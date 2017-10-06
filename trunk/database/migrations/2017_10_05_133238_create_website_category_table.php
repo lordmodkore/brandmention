@@ -30,6 +30,8 @@ class CreateWebsiteCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('website_category');
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+            Schema::drop('category_website');
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

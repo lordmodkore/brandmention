@@ -23,6 +23,14 @@ class UsersTableDataSeeder extends Seeder
             'email' => 'elland.pansensoy@gmail.com',
             'password' => bcrypt('101481qwe'),
         ]);
+        DB::table('users')->insert([
+            'firstname' => 'Michael',
+            'lastname'  =>  'Hoffman',
+            'group_id'  =>  1,
+            'verified' =>1,
+            'email' => 'hoffmannm181@gmail.com',
+            'password' => bcrypt('Pass123'),
+        ]);
         for ($i = 0; $i < $limit; $i++) {
             DB::table('users')->insert([ //,
                 'firstname' => $faker->firstname,
