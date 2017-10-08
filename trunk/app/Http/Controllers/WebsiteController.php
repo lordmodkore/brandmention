@@ -144,7 +144,7 @@ class WebsiteController extends Controller
                         'a_links'           =>  $apiArr->a_links,
                         'a_cnt'             =>  $apiArr->a_cnt,
                         'a_cnt_rank'        =>  $apiArr->a_cnt_r,
-                        'sr_rank '          =>  $apiArr->sr_rank,
+                        'sr_rank'           =>  $apiArr->sr_rank,
                         'sr_keywords'       =>  $apiArr->sr_kwords,
                         'sr_traffic'        =>  $apiArr->sr_traffic,
                         'sr_costs'          =>  $apiArr->sr_costs,
