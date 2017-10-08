@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\User;
 use App\Website;
 use App\Category;
@@ -95,6 +96,74 @@ class WebsiteController extends Controller
     }
 
     /**
+     * [uploadcsv description]
+     * @return [type] [description]
+     */
+    public function uploadCsv(Request $request){
+        $this->validate($request, [
+            'csvfile' => ' required|mimes:csv,txt',
+        ]);
+   
+        $flag = true;
+        $csv = $request->file('csvfile');
+        $destPath = public_path('/uploads/');
+        $csv->move( $destPath,  $csv ->getClientOriginalName());
+        $filePath = $destPath.$csv ->getClientOriginalName();
+
+        Excel::filter('chunk')->load($filePath)->chunk(10, function($results )
+        {
+               $current_user = auth()->user()->id;
+               $website = new Website;
+                foreach($results as $key=>$row)
+                {
+                    if($key===0){
+                        continue;
+                    }
+
+                    $apiResponse = $this->apiRequest($row->url);
+                    $apiArr = json_decode($apiResponse);
+
+                    $csvData[] = array(
+                        'url'       =>  'http://www.'.$row->url,
+                        'user_id'  =>  $current_user,   
+                        'cost'      =>  12,
+                        'currency'  =>  'USD',
+                        'language'  =>  'EN',
+                        'f_n'       =>  'follow',    
+                        'da'                =>  $apiArr->da,
+                        'pa'                =>  $apiArr->pa,
+                        'moz_rank'          =>  $apiArr->mozrank,
+                        'links'             =>  $apiArr->links,
+                        'equity'            =>  $apiArr->equity,
+                        'cf'                =>  $apiArr->cf,
+                        'tf'                =>  $apiArr->tf,
+                        'el'                =>  $apiArr->el,
+                        'ref_domains'       =>  $apiArr->refd,
+                        'sem_rush_domain'   =>  $apiArr->sr_domain,
+                        'alexa_rank'        =>  $apiArr->a_rank,
+                        'a_links'           =>  $apiArr->a_links,
+                        'a_cnt'             =>  $apiArr->a_cnt,
+                        'a_cnt_rank'        =>  $apiArr->a_cnt_r,
+                        'sr_rank '          =>  $apiArr->sr_rank,
+                        'sr_keywords'       =>  $apiArr->sr_kwords,
+                        'sr_traffic'        =>  $apiArr->sr_traffic,
+                        'sr_costs'          =>  $apiArr->sr_costs,
+                        'sr_ulinks'         =>  $apiArr->sr_ulinks,
+                        'sr_hlinks'         =>  $apiArr->sr_hlinks,
+                        'sr_dlinks'         =>  $apiArr->sr_dlinks,
+                        'created_at'        => now(), # \Datetime()
+                        'updated_at'        => now(),  # \Datetime()
+                    );
+
+                }  
+                if(!empty($csvData)){
+                    $website->insert($csvData);
+                }
+        });
+        return redirect()->route('website.index')->with('success','Website added successfully');
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -136,7 +205,10 @@ class WebsiteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $website = Website::find($id);
+        $website->categories()->detach();
+        $website->delete();
+        return redirect()->route('website.index')->with('success','Website deleted successfully');
     }
 
     private function apiRequest($url){

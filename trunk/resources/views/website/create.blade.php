@@ -18,11 +18,11 @@
 
 		<div class="form-group m-b">
 			<label>Website URL</label>
-			<input type="url" class="form-control" id="url" name="url">
+			<input required type="url" class="form-control" id="url" name="url">
 		</div>
 	  	<div class="form-group m-b">
 	    	<label>Costs</label>
-	    	<input type="number" class="form-control" name="costs" id="costs"/>
+	    	<input type="number" class="form-control" name="costs" id="costs" required/>
 	  	</div>
 		<div class="form-group m-b">
         	<label>Currency</label>
@@ -32,7 +32,7 @@
       	</div>
 		<div class="form-group m-b">
 		   	<label>Categories</label>
-	        <select data-placeholder="Select Categories" name="categories[]" id="categories" multiple class="select2" style="width: 100%;">
+	        <select data-placeholder="Select Categories" name="categories[]" id="categories" multiple required class="select2" style="width: 100%;">
 	        @foreach($categories as $category)
 	        	<option value="{{$category->id}}">{{$category->name}}</option>
 	        @endforeach
@@ -56,15 +56,15 @@
       	</div>
 		<div class="form-group m-b">
 			<label>Processing Time(Days)</label>
-			<input type="text" class="form-control" name="processing_time" id="processing_time"/>
+			<input required type="text" class="form-control" name="processing_time" id="processing_time"/>
 		</div>
 		<div class="form-group m-b">
 			<label>Example Post</label>
-			<input type="text" class="form-control" name="example" id="example"/>
+			<input type="text" class="form-control" name="example" id="example" required/>
 		</div>
 		<div class="form-group m-b">
 			<label>Note</label>
-			<textarea class="form-control" name="note" id="note"></textarea>
+			<textarea class="form-control" name="note" id="note" required></textarea>
 		</div>
   		<div class="form-group">
         <button class="btn btn-primary m-r">Submit</button>
