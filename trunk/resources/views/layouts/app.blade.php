@@ -119,6 +119,11 @@
                   </a>
                 </li>
                 <li>
+                  <a href="{{action('PublisherController@create')}}">
+                    <span>Add New Publisher</span>
+                  </a>
+                </li>
+                <li>
                   <a href="#">
                     <span>Groups</span>
                   </a>
@@ -400,16 +405,20 @@
       <!-- /top header -->
       <!-- main area -->
       <div class="main-content">
-        @if(session()->has('error'))
-              <div class="alert alert-danger">
-                  {{ session()->get('error') }}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul class="nav">
+                 @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+            </div>
+        @endif
+        @if(session()->has('success'))
+              <div class="alert alert-success">
+                  {{ session()->get('success') }}
               </div>
           @endif
-          @if(session()->has('success'))
-                <div class="alert alert-success">
-                    {{ session()->get('success') }}
-                </div>
-            @endif
         @yield('content')
       </div>
       <!-- /main area -->

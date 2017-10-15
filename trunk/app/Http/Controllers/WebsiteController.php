@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\User;
 use App\Website;
 use App\Category;
+use App\Publisher;
 class WebsiteController extends Controller
 {
     /**
@@ -43,7 +44,8 @@ class WebsiteController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('website.create')->with('categories',$categories);
+        $publishers = Publisher::all();
+        return view('website.create',compact('categories','publishers'));
     }
 
     /**
@@ -56,6 +58,7 @@ class WebsiteController extends Controller
     {
 
         $current_user = auth()->user()->id;
+
         $category = Category::find($request->categories);
         $website = new Website;
         $website->user_id           =   $current_user;
@@ -92,6 +95,7 @@ class WebsiteController extends Controller
         $website->sr_dlinks         =   $apiArr->sr_dlinks;
         $website->save();
         $website->categories()->attach($request->categories);
+        $website->publishers()->attach($request->publishers);
         return redirect()->route('website.index')->with('success','Website added successfully');
     }
 

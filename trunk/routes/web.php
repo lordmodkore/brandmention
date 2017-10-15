@@ -25,11 +25,11 @@ Route::get('/verify/{token}', 'Auth\RegisterController@verify');
 Route::middleware(['auth', 'admin'])->group(function () {
 	Route::resource('groups','GroupController');
 	Route::resource('users','UserController', ['only' => ['destroy']]);
+	Route::resource('publisher','PublisherController');
 });
 
 Route::middleware(['auth'])->group(function () {
 	Route::resource('users','UserController');
 	Route::post('website/upload', ['uses' => 'WebsiteController@uploadCsv','as'=>'website.upload']);
 	Route::resource('website','WebsiteController');
-
 });

@@ -39,6 +39,14 @@
 	        </select>
 		</div>
 		<div class="form-group m-b">
+		   	<label>Publisher</label>
+	        <select data-placeholder="Select Publisher" name="publishers[]" id="categories" multiple required class="select2" style="width: 100%;">
+	        @foreach($publishers as $publisher)
+	        	<option value="{{$publisher->id}}">{{$publisher->firstname}}</option>
+	        @endforeach
+	        </select>
+		</div>
+		<div class="form-group m-b">
 			<label>Language</label>
 			<select data-placeholder="Select Language" name="language" id="language"  class="select2" style="width: 100%;">
 				<option value="EN">English</option>
@@ -56,15 +64,15 @@
       	</div>
 		<div class="form-group m-b">
 			<label>Processing Time(Days)</label>
-			<input required type="text" class="form-control" name="processing_time" id="processing_time"/>
+			<input type="text" class="form-control" name="processing_time" id="processing_time"/>
 		</div>
 		<div class="form-group m-b">
 			<label>Example Post</label>
-			<input type="text" class="form-control" name="example" id="example" required/>
+			<input type="text" class="form-control" name="example" id="example" />
 		</div>
 		<div class="form-group m-b">
 			<label>Note</label>
-			<textarea class="form-control" name="note" id="note" required></textarea>
+			<textarea class="form-control" name="note" id="note" ></textarea>
 		</div>
   		<div class="form-group">
         <button class="btn btn-primary m-r">Submit</button>

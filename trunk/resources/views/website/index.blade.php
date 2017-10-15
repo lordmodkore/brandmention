@@ -59,7 +59,12 @@
                       @endforeach
                     </td>
           					<td data-title="F/N">{{$website->f_n}}</td>
-          					<td data-title="Pubisher">{{$website->user->firstname}}</td>
+                    <td data-title="Categories">
+                      @foreach($website->publishers as $publisher)
+                        {{ $loop->first ? '' : '/' }}
+                        {{$publisher->firstname ."&nbsp;".$publisher->lastname }}
+                      @endforeach
+                    </td>
     						    <td data-title="Processing Time">{{$website->processing_time}}</td>
                     <td data-title="Actions">
                       <div class="row">

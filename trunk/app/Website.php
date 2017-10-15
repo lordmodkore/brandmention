@@ -8,7 +8,7 @@ class Website extends Model
 {
 	protected $fillable = [
         'url',
-           'user_id',
+        'user_id',
         'cost',
         'currency',
         'categories',
@@ -44,6 +44,9 @@ class Website extends Model
 	public function user()
     {
         return $this->belongsTo('App\User');
+    }
+    public function publishers(){
+      return $this->belongsToMany('App\Publisher')->withTimestamps();
     }
     public function categories() {
         return $this->belongsToMany('App\Category')->withTimestamps();

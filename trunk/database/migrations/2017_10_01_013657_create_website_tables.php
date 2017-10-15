@@ -43,9 +43,9 @@ class CreateWebsiteTables extends Migration
             $table->string('sf');
             $table->string('el');
             $table->string('ref_domains');
-            $table->string('processing_time');
-            $table->string('example');
-            $table->longText('note');
+            $table->string('processing_time')->nullable();
+            $table->string('example'))->nullable();
+            $table->longText('note'))->nullable();
             $table->timestamps();
         });
 
