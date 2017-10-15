@@ -44,8 +44,8 @@ class CreateWebsiteTables extends Migration
             $table->string('el');
             $table->string('ref_domains');
             $table->string('processing_time')->nullable();
-            $table->string('example'))->nullable();
-            $table->longText('note'))->nullable();
+            $table->string('example')->nullable();
+            $table->longText('note')->nullable();
             $table->timestamps();
         });
 

@@ -30,17 +30,17 @@
 	  	</div>
 	  	<div class="form-group m-b">
 	    	<label>Company</label>
-	    	<input type="text" class="form-control" name="company_name" id="company"  />
+	    	<input type="text" class="form-control" value ="{{old('email', $publishers->company_name)}}" name="company_name" id="company"  />
 	  	</div>
 		<div class="form-group m-b">
 			<label>Language</label>
-			<select data-placeholder="Select Language" name="language" id="language"  class="select2" style="width: 100%;">
+			<select data-placeholder="Select Language" value="{{old('email', $publishers->language)}}" name="language" id="language"  class="select2" style="width: 100%;">
 				<option value="EN">English</option>
 			</select>
 		</div>
 	  	<div class="form-group m-b">
 	    	<label>Phone</label>
-	    	<input type="phone" class="form-control" name="phone" id="phone" required />
+	    	<input type="phone" class="form-control" value="{{old('email', $publishers->language)}}" name="phone" id="phone" required />
 	  	</div>
 		<div class="form-group m-b">
 		   	<label>Country</label>
