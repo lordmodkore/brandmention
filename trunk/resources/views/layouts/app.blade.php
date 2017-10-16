@@ -114,6 +114,9 @@
                   <a href="{{action('UserController@index')}}">Customers</a>
                 </li>
                 <li>
+                  <a href="{{action('PublisherController@index')}}">Publishers</a>
+                </li>
+                <li>
                   <a href="{{action('UserController@create')}}">
                     <span>Add New User</span>
                   </a>
@@ -124,16 +127,9 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#">
-                    <span>Groups</span>
-                  </a>
-                  <ul class="sub-menu">
-                <li>
                   <a href="{{action('GroupController@create')}}">
                     <span>Add User Group</span>
                   </a>
-                </li>
-                  </ul>
                 </li>
               </ul>
             </li>
@@ -157,37 +153,21 @@
               </ul>
             </li>
             <!-- /users -->
-            <!-- cards -->
+            <!-- categories -->
             <li>
-              <a href="javascript:;">
-                <span class="badge pull-right">4</span>
-                <i class="icon-drop"></i>
-                <span>Cards</span>
+              <a href="{{action('WebsiteController@create')}}">
+              <i class="fa fa-list-alt"></i>
+                <span>Categories</span>
               </a>
               <ul class="sub-menu">
                 <li>
-                  <a href="cards-basic.html">
-                    <span>Basic</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="cards-portlets.html">
-                    <span>Portlets</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="cards-draggable.html">
-                    <span>Draggable</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="cards-widgets.html">
-                    <span>Widgets</span>
+                  <a href="{{action('CategoryController@index')}}">
+                    <span>List Websites</span>
                   </a>
                 </li>
               </ul>
             </li>
-            <!-- /cards -->
+            <!-- /categories -->
           </ul>
         </nav>
         <!-- /main navigation -->

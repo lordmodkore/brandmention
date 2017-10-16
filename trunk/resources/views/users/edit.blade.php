@@ -17,15 +17,14 @@
                   </li>
                   <li><a href="#tab2" data-toggle="tab">Your profile</a>
                   </li>
-                  <li><a href="#tab4" data-toggle="tab">Additional information</a>
-                  </li>
                 </ul>
+
                 <div class="tab-content">
                   <div class="tab-pane active p-x-lg" id="tab1">
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Email address</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" placeholder="{{$users->email}}" value="{{ old('email') }}"  id="email" name="email" disabled>
+                        <input type="text" class="form-control" value="{{ old('email',$users->email) }}"  id="email" name="email" disabled>
                       </div>
                     </div>
                     <div class="form-group">
@@ -37,7 +36,7 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Confirm password</label>
                       <div class="col-sm-4">
-                       	<input id="password-confirm" type="password"  placeholder="Confirm password"  class="form-control" name="password_confirmation" required>
+                       	<input id="password-confirm" type="password"  placeholder="Confirm password"  class="form-control" name="password_confirmation">
                       </div>
                     </div>
                   </div>
@@ -45,63 +44,49 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">First Name</label>
                       <div class="col-sm-4">
-                    	<input id="firstname" type="text" class="form-control" name="firstname">
+                    	<input id="firstname" type="text" value="{{ old('password',$users->firstname) }}" class="form-control" name="firstname">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Last Name</label>
                       <div class="col-sm-4">
-                  		<input id="lastname" type="text" class="form-control" name="lastname">
+                  		<input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname',$users->lastname) }}" >
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Company name</label>
                       <div class="col-sm-4 pt5 mt2">
-      		     			<input id="lastname" type="text" class="form-control" name="company_name">
+      		     			<input id="company_name" type="text" value="{{ old('company_name',$users->company_name) }}"  class="form-control" name="company_name">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Company address</label>
                       <div class="col-sm-4 pt5 mt2">
-      		     			<textarea id="lastname" type="text" class="form-control" name="company_address"></textarea>
+      		     			<textarea id="lastname" type="text" class="form-control" value="{{ old('company_address',$users->company_address) }}" name="company_address"></textarea>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Street Address</label>
                       <div class="col-sm-4 pt5 mt2">
-      		     			<input id="street_address" type="text" class="form-control" name="street_address">
+      		     			<input id="street_address" type="text" class="form-control" name="street_address" value="{{ old('street_address',$users->street_address) }}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">City</label>
                       <div class="col-sm-4 pt5 mt2">
-      		     			<input id="city" type="text" class="form-control" name="city">
+      		     			  <input id="city" type="text" class="form-control" name="city" value="{{ old('city',$users->city) }}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Country</label>
                       <div class="col-sm-4 pt5 mt2">
-      		     			<input id="country" type="text" class="form-control" name="country">
+      		     			<input id="country" type="text" value="{{ old('country',$users->country) }}" class="form-control" name="country">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Post Code</label>
                       <div class="col-sm-4 pt5 mt2">
-      		     			<input id="post_code" type="text" class="form-control" name="post_code">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tab-pane p-x-lg" id="tab4">
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Gender</label>
-                      <div class="col-sm-4 pt5 mt2">
-                        <label class="cb-radio">
-                          <input type="radio" name="gender" value="male" />male
-                        </label>
-                        <br>
-                        <label class="cb-radio">
-                          <input type="radio" name="gender" value="female" />Female
-                        </label>
+      		     			<input id="postcode" value="{{ old('post_code',$users->postcode) }}" type="text" class="form-control" name="postcode">
                       </div>
                     </div>
                   </div>
@@ -119,6 +104,7 @@
 @endsection
 
 @section ('scripts')
+
     <script src="{{ asset('vendor/fastclick/lib/fastclick.js') }}"></script>
     <script src="{{ asset('vendor/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
     <script src="{{ asset('js/helpers/smartresize.js') }}"></script>
@@ -129,4 +115,5 @@
     <script src="{{ asset('vendor/checkbo/src/0.1.4/js/checkBo.min.js') }}"></script>
     <script src="{{ asset('vendor/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
     <script src="{{ asset('js/forms/wizard.js') }}"></script>
+    <script src="{{ asset('js/forms/gmap.js') }}"></script>
 @endsection

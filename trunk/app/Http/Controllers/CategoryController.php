@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Publisher;
-use Countries;
-class PublisherController extends Controller
+use App\Category;
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,8 @@ class PublisherController extends Controller
      */
     public function index()
     {
-            $publishers = Publisher::orderBy('id','ASC')->paginate(10);
-        return view('publisher.index',compact('publishers'));
+        $categories = Category::orderBy('id','ASC')->paginate(10);
+        return view('categories.index',compact('categories'));
     }
 
     /**
@@ -25,8 +24,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        $countries = Countries::all();
-        return view('publisher.create')->with('countries',$countries);
+        //
     }
 
     /**
@@ -37,12 +35,7 @@ class PublisherController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'email'             => 'required|unique:publishers,email|max:255',
-            'paypal_username'   => 'required|unique:publishers,paypal_username|max:255',
-        ]);
-        Publisher::create($request->all());
-        return redirect()->route('publisher.index')->with('success','Publisher added successfully');
+        //
     }
 
     /**
@@ -64,9 +57,7 @@ class PublisherController extends Controller
      */
     public function edit($id)
     {
-        $countries = Countries::all();
-        $publishers = Publisher::find($id);
-        return view('publisher.edit',compact('publishers','countries'));
+        //
     }
 
     /**
@@ -78,11 +69,7 @@ class PublisherController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $publisher = Publisher::find($id);     
-
-        $result = $publisher->update($request->all());
-        return redirect('publisher')->with('success','Publisher has been updated');
+        //
     }
 
     /**
@@ -93,7 +80,6 @@ class PublisherController extends Controller
      */
     public function destroy($id)
     {
-        Publisher::find($id)->delete();
-        return redirect()->route('publisher.index')->with('success','Publisher deleted successfully');
+        //
     }
 }

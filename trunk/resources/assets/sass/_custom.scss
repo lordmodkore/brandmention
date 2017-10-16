@@ -31,8 +31,54 @@
 
 
 }
-.sidebar-panel > nav ul > li > a [class^="fa"]{
-    padding-right: 0.9375rem;
-    width: 1.875rem;
-    text-align: center
+.sidebar-panel{
+	> nav{
+		ul{
+			> li > a [class^="fa"]{
+	  			padding-right: 0.9375rem;
+		    	width: 1.875rem;
+			    text-align: center
+			}
+			li.menu-accordion {
+				> a::before{
+					box-shadow:none;
+					line-height:0.5rem;
+				}
+				&.open{
+					> a:before{
+				      	font-family: 'FontAwesome';
+      					content: '\f054';
+						background:none;
+						box-shadow:none;
+					}
+				}
+			}
+		}
+	}	
+}
+.layout-small-menu{
+	.sidebar-panel{
+		> nav{
+			ul{
+				> li > a [class^="fa"]{
+					display: block;
+				    padding: 0;
+				    width: 100%;
+				}
+			}
+		}			
+	}
+}
+.category-table{
+	tbody{
+		@media(min-width:1200px){
+			td:nth-child(2) {
+				width:15%;
+			}
+			td:nth-child(3) {
+				width:70%;
+			}
+		}
+
+	}
 }

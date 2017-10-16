@@ -26,6 +26,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::resource('groups','GroupController');
 	Route::resource('users','UserController', ['only' => ['destroy']]);
 	Route::resource('publisher','PublisherController');
+	Route::resource('categories','CategoryController');
 });
 
 Route::middleware(['auth'])->group(function () {

@@ -13,47 +13,46 @@
 <div class="card bg-white">
   <div class="card-header">Publisher Information</div>
   <div class="card-block">
-    <form role="form" class="form-validation" method="POST" action="{{route('publisher.update', $publishers->id)}}" >
+    <form role="form" class="form-validation" method="POST" action="{{route('publisher.store')}}">
          	{{ csrf_field() }}
-	 <input name="_method" type="hidden" value="PATCH">
+
 		<div class="form-group m-b">
 			<label>First Name</label>
-			<input required type="text" value="{{old('firstname', $publishers->firstname)}}" class="form-control" id="firstname" name="firstname" required>
+			<input required type="text" class="form-control" id="firstname" name="firstname" required>
 		</div>
 	  	<div class="form-group m-b">
 	    	<label>Last Name</label>
-	    	<input type="text" class="form-control" value="{{old('lastname', $publishers->lastname)}}" name="lastname" id="lastname" required />
+	    	<input type="text" class="form-control" name="lastname" id="lastname" required />
 	  	</div>
 	  	<div class="form-group m-b">
 	    	<label>Email</label>
-	    	<input type="email" class="form-control" value="{{old('email', $publishers->email)}}" name="email" id="email" required />
+	    	<input type="email" class="form-control" name="email" id="email" required />
 	  	</div>
 	  	<div class="form-group m-b">
 	    	<label>Company</label>
-	    	<input type="text" class="form-control" value ="{{old('company_name', $publishers->company_name)}}" name="company_name" id="company"  />
+	    	<input type="text" class="form-control" name="company_name" id="company"  />
 	  	</div>
 		<div class="form-group m-b">
 			<label>Language</label>
-			<select data-placeholder="Select Language" value="{{old('language', $publishers->language)}}" name="language" id="language"  class="select2" style="width: 100%;">
+			<select data-placeholder="Select Language" name="language" id="language"  class="select2" style="width: 100%;">
 				<option value="EN">English</option>
 			</select>
 		</div>
 	  	<div class="form-group m-b">
 	    	<label>Phone</label>
-	    	<input type="phone" class="form-control" value="{{old('phone', $publishers->phone)}}" name="phone" id="phone" required />
+	    	<input type="phone" class="form-control" name="phone" id="phone" required />
 	  	</div>
 		<div class="form-group m-b">
 		   	<label>Country</label>
-	        <select data-placeholder="Select Country"  name="country" id="country" required class="select2" style="width: 100%;">
-
+	        <select data-placeholder="Select Country" name="country" id="country" required class="select2" style="width: 100%;">
 	        @foreach($countries as $country)
-	        	<option value="{{$country->iso_3166_2}}" {{($publishers->country==$country->iso_3166_2) ? 'selected="selected"' : ''}}>{{$country->name}}</option>
+	        	<option value="{{$country->iso_3166_2}}">{{$country->name}}</option>
 	        @endforeach
 	        </select>
 		</div>
 	  	<div class="form-group m-b">
 	    	<label>Paypal Email</label>
-	    	<input type="email" class="form-control" value="{{old('paypal_username', $publishers->paypal_username)}}" name="paypal_username" id="paypal_username" required />
+	    	<input type="email" class="form-control" name="paypal_username" id="paypal_username" required />
 	  	</div>
   		<div class="form-group">
         <button class="btn btn-primary m-r">Submit</button>

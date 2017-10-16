@@ -109,7 +109,7 @@ class UserController extends Controller
         $user->country =$request->country;
         $user->postcode =$request->postcode;
         $user->save();
-        return redirect('users/'.$user->id.'/edit')->with('success','User has been updated');
+        return redirect('users')->with('success','User has been updated');
     }
 
     /**

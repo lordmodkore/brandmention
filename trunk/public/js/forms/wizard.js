@@ -25,11 +25,9 @@
         minlength: 3
       },
       password: {
-        required: true,
         minlength: 6
       },
       cpasswordfield: {
-        required: true,
         minlength: 6,
         equalTo: '#password'
       },
