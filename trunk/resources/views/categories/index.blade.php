@@ -5,14 +5,14 @@
 @endsection
 @section ('content')
 	<div class="page-title">
-  	<div class="title">Websites</div>
-  	<div class="sub-title">List all websites</div>
+  	<div class="title">Categories</div>
+  	<div class="sub-title">List of all categories</div>
   </div>
  	<div class="card bg-white">
   	<div class="card-header">
       <div class="row">
         <div class="col-md-8">
-          All Users
+          Categories
         </div>
       </div>
     </div>

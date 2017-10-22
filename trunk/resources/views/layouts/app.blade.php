@@ -153,20 +153,27 @@
               </ul>
             </li>
             <!-- /users -->
+            <?php if($user->is('admin')) : ?>
             <!-- categories -->
             <li>
-              <a href="{{action('WebsiteController@create')}}">
+              <a href="javascript:void(0)">
               <i class="fa fa-list-alt"></i>
                 <span>Categories</span>
               </a>
               <ul class="sub-menu">
                 <li>
                   <a href="{{action('CategoryController@index')}}">
-                    <span>List Websites</span>
+                    <span>List Categories</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{action('CategoryController@create')}}">
+                    <span>Add New Category</span>
                   </a>
                 </li>
               </ul>
             </li>
+            <?php endif;?>
             <!-- /categories -->
           </ul>
         </nav>

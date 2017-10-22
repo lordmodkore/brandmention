@@ -8,12 +8,12 @@
 @endsection
 @section ('content')
 <div class="page-title">
-	<div class="title">Add A Publisher</div>
+	<div class="title">Add A New Category</div>
 </div>
 <div class="card bg-white">
-  <div class="card-header">Publisher Information</div>
+  <div class="card-header">Category Information</div>
   <div class="card-block">
-    <form role="form" class="form-validation" method="POST" action="{{route('publisher.store')}}">
+    <form role="form" class="form-validation" method="POST" action="{{route('categories.store')}}">
          	{{ csrf_field() }}
 
 		<div class="form-group m-b">
@@ -23,36 +23,6 @@
 	  	<div class="form-group m-b">
 	    	<label>Last Name</label>
 	    	<input type="text" class="form-control" name="lastname" id="lastname" required />
-	  	</div>
-	  	<div class="form-group m-b">
-	    	<label>Email</label>
-	    	<input type="email" class="form-control" name="email" id="email" required />
-	  	</div>
-	  	<div class="form-group m-b">
-	    	<label>Company</label>
-	    	<input type="text" class="form-control" name="company_name" id="company"  />
-	  	</div>
-		<div class="form-group m-b">
-			<label>Language</label>
-			<select data-placeholder="Select Language" name="language" id="language"  class="select2" style="width: 100%;">
-				<option value="EN">English</option>
-			</select>
-		</div>
-	  	<div class="form-group m-b">
-	    	<label>Phone</label>
-	    	<input type="phone" class="form-control" name="phone" id="phone" required />
-	  	</div>
-		<div class="form-group m-b">
-		   	<label>Country</label>
-	        <select data-placeholder="Select Country" name="country" id="country" required class="select2" style="width: 100%;">
-	        @foreach($countries as $country)
-	        	<option value="{{$country->iso_3166_2}}">{{$country->name}}</option>
-	        @endforeach
-	        </select>
-		</div>
-	  	<div class="form-group m-b">
-	    	<label>Paypal Email</label>
-	    	<input type="email" class="form-control" name="paypal_username" id="paypal_username" required />
 	  	</div>
   		<div class="form-group">
         <button class="btn btn-primary m-r">Submit</button>
