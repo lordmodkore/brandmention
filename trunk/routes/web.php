@@ -33,4 +33,5 @@ Route::middleware(['auth'])->group(function () {
 	Route::resource('users','UserController');
 	Route::post('website/upload', ['uses' => 'WebsiteController@uploadCsv','as'=>'website.upload']);
 	Route::resource('website','WebsiteController');
+	Route::resource('bookings','BookingController');
 });

@@ -1,5 +1,5 @@
 @extends ('layouts.app')
-@section ('title', 'Add New Website')
+@section ('title', 'Edit Publisher Information')
 @section('styles')
 	<link href="{{ asset('vendor/multiselect/css/multi-select.css') }}" rel="stylesheet">
 	<link href="{{ asset('vendor/ui-select/dist/select.css') }}" rel="stylesheet">

@@ -128,7 +128,7 @@ class WebsiteController extends Controller
                     $apiArr = json_decode($apiResponse);
 
                     $csvData[] = array(
-                        'url'       =>  'http://www.'.$row->url,
+                        'url'       =>  $row->url,
                         'user_id'  =>  $current_user,   
                         'cost'      =>  12,
                         'currency'  =>  'USD',
@@ -186,7 +186,9 @@ class WebsiteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Category::all();
+        $publishers = Publisher::all();
+        return view('website.edit',compact('categories','publishers'));
     }
 
     /**

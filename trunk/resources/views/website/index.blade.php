@@ -69,7 +69,7 @@
                     <td data-title="Actions">
                       <div class="row">
                         <div class="col-lg-4 col-xs-6">
-                          <a class="btn btn-primary btn-xs" href="#" >
+                          <a class="btn btn-primary btn-xs" href="{{action('WebsiteController@edit', $website->id)}}" >
                             <span class="glyphicon glyphicon-pencil"></span>
                           </a>                 
                         </div>

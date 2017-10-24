@@ -1,5 +1,5 @@
 @extends ('layouts.app')
-@section ('title', 'Edit Website')
+@section ('title', 'Add New Website')
 @section('styles')
 	<link href="{{ asset('vendor/multiselect/css/multi-select.css') }}" rel="stylesheet">
 	<link href="{{ asset('vendor/ui-select/dist/select.css') }}" rel="stylesheet">
@@ -8,7 +8,7 @@
 @endsection
 @section ('content')
 <div class="page-title">
-	<div class="title">Edit Website</div>
+	<div class="title">Add Website</div>
 </div>
 <div class="card bg-white">
   <div class="card-header">Add Websites</div>
