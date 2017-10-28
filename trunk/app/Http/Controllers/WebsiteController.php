@@ -188,7 +188,16 @@ class WebsiteController extends Controller
     {
         $categories = Category::all();
         $publishers = Publisher::all();
-        return view('website.edit',compact('categories','publishers'));
+        $website= Website::find($id);
+        $website_categories = $website->categories;
+        $website_publishers = $website->publishers;
+        foreach($website_categories as $category){
+            $selected[] = $category->id;
+        }
+        foreach($website_publishers as $publisher){
+            $selected_pub[] = $publisher->id;
+        }
+        return view('website.edit',compact('selected_pub','selected','categories','publishers','website'));
     }
 
     /**
@@ -200,7 +209,11 @@ class WebsiteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $website= Website::find($id);
+        $website->categories()->attach($request->categories);
+        $website->publishers()->attach($request->publishers);
+        $website->save($request->all());
+        return redirect()->route('website.index')->with('success','Website updated successfully');
     }
 
     /**

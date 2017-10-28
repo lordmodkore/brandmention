@@ -10,11 +10,11 @@
         	{{ csrf_field() }}
           <div class="card">
             <div class="card-block p-a-0">
-              <div class="box-tab m-b-0" id="rootwizard">
+              <div class="box-tab m-b-0" id="bookingWizard">
                 <ul class="wizard-tabs">
                   <li><a class="active" href="#tab1"  data-toggle="tab">Select Website to Book</a>
                   </li>
-                  <li><a href="#tab2" data-toggle="tab">Select Website to Book</a>
+                  <li><a href="#tab2" data-toggle="tab">Booking Information</a>
                   </li>
                 </ul>
                 <!--first tab-->
@@ -44,12 +44,18 @@
                                     </td>
                                     <td data-title="Actions">
                                       <div class="row">
-                                        <div class="col-lg-4 col-xs-6">
+                                
+                                        <div class="col-lg-4 col-xs-3">
+                                          <a class="select_site btn btn-primary btn-xs" href="#" data-website_id="{{$website->id}}">
+                                            <span class="fa fa-calendar-check-o"></span>
+                                          </a>                 
+                                        </div>
+                                        <div class="col-lg-4 col-xs-3">
                                           <a class="btn btn-primary btn-xs" href="#" >
                                             <span class="glyphicon glyphicon-pencil"></span>
                                           </a>                 
                                         </div>
-                                        <div class="col-lg-4 col-xs-6">
+                                        <div class="col-lg-4 col-xs-3">
                                             <form action="" method="post">
                                             {{csrf_field()}}
                                              <input name="_method" type="hidden" value="DELETE">
@@ -67,9 +73,9 @@
                   <!--start second tab-->
                   <div class="tab-pane p-x-lg" id="tab2">
                     <div class="form-group">
-                      <label class="col-sm-2 control-label">First Name</label>
+                      <label class="col-sm-2 control-label">Site URL</label>
                       <div class="col-sm-4">
-                    	<input id="firstname" type="text" value="" class="form-control" name="firstname">
+                    	<input id="website_id_use" type="text" value="{{$website->id}}" class="form-control" name="website_id">
                       </div>
                     </div>
                     <div class="form-group">
@@ -117,8 +123,7 @@
                   </div>
         					<ul class="pager wizard wizard-pager">
         						  <li class="previous button-previous"><a href="javascript:;">Previous</a></li>
-        					  	<li class="next button-next"><a href="javascript:;">Next</a></li>
-        						  <li class="finish pull-right"><button type="submit" class="btn"> Update</button></li>
+        						  <li class="finish pull-right"><button type="submit" class="btn">Book</button></li>
         					</ul>
                 </div>
               </div>

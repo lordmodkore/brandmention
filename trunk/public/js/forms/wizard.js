@@ -53,4 +53,13 @@
     onLast: lastStep,
     onTabClick: checkValidation
   });
+  $('#bookingWizard').bootstrapWizard({
+    tabClass: '',
+    'nextSelector': '.select_site',
+    'previousSelector': '.button-previous',
+    onNext:function(){},
+    onLast: lastStep,
+    onTabClick: checkValidation
+  });
+
 })(jQuery);

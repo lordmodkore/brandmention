@@ -142,7 +142,7 @@
               <ul class="sub-menu">
                 <li>
                   <a href="{{action('WebsiteController@index')}}">
-                    <span>List Websites</span>
+                    <span>All Websites</span>
                   </a>
                 </li>
                 <li>
@@ -163,7 +163,7 @@
               <ul class="sub-menu">
                 <li>
                   <a href="{{action('CategoryController@index')}}">
-                    <span>List Categories</span>
+                    <span>All Categories</span>
                   </a>
                 </li>
                 <li>
@@ -175,6 +175,20 @@
             </li>
             <?php endif;?>
             <!-- /categories -->
+            <!--bookings-->
+              <li>
+                <a href="javascript:void()">
+                  <i class="fa fa-calendar"></i>
+                  <span>Bookings</span>
+                </a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="{{action('BookingController@create')}}">
+                      <span>Add New Bookings</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
           </ul>
         </nav>
         <!-- /main navigation -->

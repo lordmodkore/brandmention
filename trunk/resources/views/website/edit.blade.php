@@ -1,5 +1,5 @@
 @extends ('layouts.app')
-@section ('title', 'Add New Website')
+@section ('title', 'Edit Website')
 @section('styles')
 	<link href="{{ asset('vendor/multiselect/css/multi-select.css') }}" rel="stylesheet">
 	<link href="{{ asset('vendor/ui-select/dist/select.css') }}" rel="stylesheet">
@@ -8,41 +8,54 @@
 @endsection
 @section ('content')
 <div class="page-title">
-	<div class="title">Add Website</div>
+	<div class="title">Edit Website</div>
 </div>
 <div class="card bg-white">
-  <div class="card-header">Add Websites</div>
+  <div class="card-header">Edit Websites</div>
   <div class="card-block">
-    <form role="form" class="form-validation" method="POST" action="{{route('website.store')}}">
-         	{{ csrf_field() }}
-
+    <form role="form" class="form-validation" method="POST" action="{{route('website.update',$website->id)}}">
+           	{{ csrf_field() }}
+  	 	<input name="_method" type="hidden" value="PATCH">
 		<div class="form-group m-b">
 			<label>Website URL</label>
-			<input required type="url" class="form-control" id="url" name="url">
+			<input required type="text" class="form-control" id="url" name="url" value="{{ old('url',$website->url) }}">
 		</div>
 	  	<div class="form-group m-b">
 	    	<label>Costs</label>
-	    	<input type="number" class="form-control" name="costs" id="costs" required/>
-	  	</div>
+	    	<input type="number" class="form-control" name="costs" id="costs" required value="{{ old('cost',$website->cost) }}"/>
+	  	</div>	  	
 		<div class="form-group m-b">
         	<label>Currency</label>
 			<select data-placeholder="Select Currency" name="currency" id="currency"  class="select2" style="width: 100%;">
-				<option value="USD">US Dollars</option>
+				<option <?php echo $website->currency=="USD" ? "selected" : ""; ?> value="USD">US Dollars</option>
+				<option <?php echo $website->currency=="EU" ? "selected" : ""; ?> value="EU">Euro</option>
 			</select>
       	</div>
 		<div class="form-group m-b">
 		   	<label>Categories</label>
 	        <select data-placeholder="Select Categories" name="categories[]" id="categories" multiple required class="select2" style="width: 100%;">
-	        @foreach($categories as $category)
-	        	<option value="{{$category->id}}">{{$category->name}}</option>
-	        @endforeach
+	        	@foreach($categories as $category)
+			        <?php 
+			        	$selected_category = "";
+			        	if(in_array($category->id,$selected)){
+			        		$selected_category = "selected";
+			        	} 
+			        ?>
+    				<option <?php echo $selected_category ?> value="{{$category->id}}">{{$category->name}}</option>
+	        	@endforeach
 	        </select>
 		</div>
 		<div class="form-group m-b">
 		   	<label>Publisher</label>
 	        <select data-placeholder="Select Publisher" name="publishers[]" id="categories" multiple required class="select2" style="width: 100%;">
 	        @foreach($publishers as $publisher)
-	        	<option value="{{$publisher->id}}">{{$publisher->firstname}}</option>
+			        <?php 
+			        	$selected_publisher = "";
+			        	if(in_array($publisher->id,$selected_pub)){
+			        		$selected_publisher = "selected";
+			        	} 
+			        ?>
+	        	<option <?php echo $selected_publisher ?> value="{{$publisher->id}}">{{$publisher->firstname}}</option>
 	        @endforeach
 	        </select>
 		</div>
